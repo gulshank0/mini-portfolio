@@ -1,10 +1,8 @@
 "use client";
 
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { Circle, Github, Linkedin, Twitter } from "lucide-react";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Twitter } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 
 function ElegantShape({

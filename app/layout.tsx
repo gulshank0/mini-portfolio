@@ -20,7 +20,6 @@ export const metadata: Metadata = {
       {
         url: "/ironman-4.jpg",
         type: "image/jpg",
-        round: true,
       },
     ],
     shortcut: "/ironman-4.jpg",
