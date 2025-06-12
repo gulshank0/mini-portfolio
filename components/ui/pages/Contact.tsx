@@ -12,12 +12,12 @@ export default function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
         
@@ -85,7 +85,7 @@ export default function Contact() {
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                             >
-                                Thank you for your message! I'll get back to you soon.
+                                Thank you for your message! I will get back to you soon.
                             </motion.div>
                         ) : (
                             <form onSubmit={handleSubmit}>

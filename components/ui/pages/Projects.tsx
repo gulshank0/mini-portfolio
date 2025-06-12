@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Projects() {
     return (
         <div className="flex flex-col gap-8 pt-30 pb-20 py-8 bg-black text-white">
@@ -6,7 +8,9 @@ export default function Projects() {
                 {/* First Project Card */}
                 <div className="bg-gray-950 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className="relative">
-                        <img 
+                        <Image
+                        width={800}
+                        height={400} 
                             src="/amazon.jpg" 
                             alt="Project 1" 
                             className="w-full h-64 object-cover"
@@ -44,7 +48,9 @@ export default function Projects() {
                 {/* Second Project Card */}
                 <div className="bg-gray-950 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className="relative">
-                        <img 
+                        <Image 
+                        width={800}
+                        height={400}
                             src="/chat.png" 
                             alt="Project 2" 
                             className="w-full h-64 object-cover"
@@ -53,7 +59,7 @@ export default function Projects() {
                             Live
                         </div>
                     </div>
-                    <div className="p-6 bg-slate-950/50 backdrop-blur-sm">
+                    <div className="p-6">
                         <h3 className="text-2xl font-semibold mb-2">AI Content Generator</h3>
                         <p className="text-gray-300 mb-4">
                             An AI-powered content generation tool that creates blog posts, product descriptions,
