@@ -27,8 +27,9 @@ export default function Navbar() {
           <li>
             <Link 
               href="#home"
+              data-bobility="false"
               onClick={handleScroll} 
-              area-label="Home"
+              area-label="scroll to Home section"
               className="text-gray-300 text-2xl hover:text-purple-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300 transition-colors duration-300"
             >
               Home
@@ -38,7 +39,7 @@ export default function Navbar() {
             <Link 
               href="#skills" 
               onClick={handleScroll} 
-              area-label="Skills"
+              area-label="scroll to Skills section"
               className="text-gray-300 text-2xl hover:text-purple-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300 transition-colors duration-300"
             >
               Skills
@@ -48,7 +49,7 @@ export default function Navbar() {
             <Link 
               href="#projects" 
               onClick={handleScroll} 
-              area-label="Projects"
+              area-label="scroll to Projects section"
               className="text-gray-300 text-2xl hover:text-purple-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300 transition-colors duration-300"
             >
               Projects
@@ -58,7 +59,8 @@ export default function Navbar() {
             <Link 
               href="#contact" 
               onClick={handleScroll} 
-              area-label="Contact"
+              area-label="scroll to Contact section"
+              data-bobility="false"
               className="text-gray-300 text-2xl hover:text-purple-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300 transition-colors duration-300"
             >
               Contact
