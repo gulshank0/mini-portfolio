@@ -7,7 +7,7 @@ export default function Projects() {
                 <div className="bg-gray-950 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className="relative">
                         <img 
-                            src="/project1.jpg" 
+                            src="/amazon.jpg" 
                             alt="Project 1" 
                             className="w-full h-64 object-cover"
                         />
@@ -15,21 +15,21 @@ export default function Projects() {
                             Live
                         </div>
                     </div>
-                    <div className="p-6">
+                    <div className="p-6 bg-slate-950/50 backdrop-blur-sm">
                         <h3 className="text-2xl font-semibold mb-2">E-Commerce Platform</h3>
                         <p className="text-gray-300 mb-4">
-                            A full-stack e-commerce platform built with React, Node.js, and MongoDB.
+                            A full-stack e-commerce platform built with React, Node.js, and PostgreSQL.
                             Features include user authentication, product filtering, cart functionality,
                             and payment processing.
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
                             <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">React</span>
                             <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">Node.js</span>
-                            <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                            <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
                             <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">Stripe</span>
                         </div>
                         <div className="flex space-x-4">
-                            <a href="https://myproject1.com" target="_blank" rel="noopener noreferrer" 
+                            <a href="https://amazon.in" target="_blank" rel="noopener noreferrer" 
                                className="bg-purple-900/50 hover:bg-purple-700/50 text-white px-4 py-2 rounded-md transition-colors">
                                 View Live
                             </a>
@@ -45,7 +45,7 @@ export default function Projects() {
                 <div className="bg-gray-950 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                     <div className="relative">
                         <img 
-                            src="/project2.jpg" 
+                            src="/chat.png" 
                             alt="Project 2" 
                             className="w-full h-64 object-cover"
                         />
@@ -53,7 +53,7 @@ export default function Projects() {
                             Live
                         </div>
                     </div>
-                    <div className="p-6">
+                    <div className="p-6 bg-slate-950/50 backdrop-blur-sm">
                         <h3 className="text-2xl font-semibold mb-2">AI Content Generator</h3>
                         <p className="text-gray-300 mb-4">
                             An AI-powered content generation tool that creates blog posts, product descriptions,
@@ -66,7 +66,7 @@ export default function Projects() {
                             <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">OpenAI API</span>
                         </div>
                         <div className="flex space-x-4">
-                            <a href="https://myproject2.com" target="_blank" rel="noopener noreferrer"
+                            <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"
                                className="bg-purple-900/50 hover:bg-purple-700/50 text-white px-4 py-2 rounded-md transition-colors">
                                 View Live
                             </a>
