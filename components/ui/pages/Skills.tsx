@@ -37,7 +37,7 @@ import { SiCss3,
 
 export default function Skills() {  
     return (
-        <div className="space-y-8 py-6 px-6 pb-20 pt-40 bg-black backdrop-blur-sm border-b border-purple-500/20">
+        <div className="space-y-8 py-6 px-6 pb-35 pt-40 bg-black backdrop-blur-sm border-b border-purple-500/20">
         <h1 className="lg:text-3xl text-xl text-center text-gray-200 font-bold gradient-text">My Tools</h1>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {skills.map((skill, index) => (
