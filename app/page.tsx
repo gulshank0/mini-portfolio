@@ -5,13 +5,24 @@ import Projects from "@/components/ui/pages/Projects";
 import Contact from "@/components/ui/pages/Contact";
 
 export default function Home() {
+  
+  
+  
   return ( 
 <div>   
   <Navbar/>
+<section id="home">
     <HeroGeometric />
+</section>
+  <section id="skills">
     <Skills />
+  </section>
+  <section id="projects">
     <Projects />
+  </section>
+  <section id="contact">
     <Contact />
+  </section>
      </div>
   );
 }

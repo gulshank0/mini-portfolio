@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import React from 'react'
 import Logo from './logo';
+import { AnimatedResumeButton } from './resume-button';
 export default function Navbar() {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
@@ -29,7 +30,7 @@ export default function Navbar() {
               href="#home"
               data-bobility="false"
               onClick={handleScroll} 
-              area-label="scroll to Home section"
+              area-label="scroll to Home"
               className="text-gray-300 text-2xl hover:text-purple-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300 transition-colors duration-300"
             >
               Home
@@ -39,7 +40,7 @@ export default function Navbar() {
             <Link 
               href="#skills" 
               onClick={handleScroll} 
-              area-label="scroll to Skills section"
+              area-label="Skills"
               className="text-gray-300 text-2xl hover:text-purple-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300 transition-colors duration-300"
             >
               Skills
@@ -49,7 +50,7 @@ export default function Navbar() {
             <Link 
               href="#projects" 
               onClick={handleScroll} 
-              area-label="scroll to Projects section"
+              area-label="Projects"
               className="text-gray-300 text-2xl hover:text-purple-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300 transition-colors duration-300"
             >
               Projects
@@ -59,12 +60,15 @@ export default function Navbar() {
             <Link 
               href="#contact" 
               onClick={handleScroll} 
-              area-label="scroll to Contact section"
-              data-bobility="false"
+              area-label="Contact"
               className="text-gray-300 text-2xl hover:text-purple-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-purple-400 hover:after:w-full after:transition-all after:duration-300 transition-colors duration-300"
             >
               Contact
             </Link>
+          </li>
+          <li>
+            <AnimatedResumeButton/>
+            
           </li>
         </ul>
       </div>
