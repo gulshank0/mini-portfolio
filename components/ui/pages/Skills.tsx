@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { SiCss3,
     SiDocker,
     SiExpress,
-    SiGraphql,
     SiHtml5,
     SiJavascript,
     SiMongodb,
@@ -14,7 +13,15 @@ import { SiCss3,
     SiTailwindcss,
     SiTrpc,
     SiTurborepo,
-    SiTypescript, } from "react-icons/si";
+    SiTypescript,
+  SiNextdotjs,
+    SiVercel,
+    SiGit,
+    SiGithub,
+    SiNodedotjs,
+    SiWebrtc,
+    SiShadcnui,
+  } from "react-icons/si";
 
     const skills = [
         { name: "HTML", icon: SiHtml5, color: "#E34F26", progress: 95 },
@@ -23,7 +30,6 @@ import { SiCss3,
         { name: "React", icon: SiReact, color: "#61DAFB", progress: 88 },
         { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4", progress: 85 },
         { name: "TypeScript", icon: SiTypescript, color: "#3178C6", progress: 80 },
-        { name: "GraphQL", icon: SiGraphql, color: "#E10098", progress: 75 },
         { name: "tRPC", icon: SiTrpc, color: "#2596BE", progress: 70 },
         { name: "Turborepo", icon: SiTurborepo, color: "#EF4444", progress: 65 },
         { name: "Docker", icon: SiDocker, color: "#2496ED", progress: 72 },
@@ -31,6 +37,14 @@ import { SiCss3,
         { name: "MongoDB", icon: SiMongodb, color: "#47A248", progress: 78 },
         { name: "Prisma", icon: SiPrisma, color: "#2D3748", progress: 76 },
         { name: "SQL", icon: SiPostgresql, color: "#4169E1", progress: 82 },
+        { name: "Next.js", icon: SiNextdotjs, color: "#000000", progress: 90 },
+        { name: "Vercel", icon: SiVercel, color: "#000000", progress: 88 },
+        { name: "Git", icon: SiGit, color: "#F05032", progress: 95 },
+        { name: "GitHub", icon: SiGithub, color: "#181717", progress: 90 },
+        { name: "Node.js", icon: SiNodedotjs, color: "#339933", progress: 85 },
+        { name: "WebRTC", icon: SiWebrtc, color: "#4A90E2", progress: 70 },
+        { name: "shadcn/ui", icon: SiShadcnui, color: "#FBBF24", progress: 75 },
+        
       ];
       
 
