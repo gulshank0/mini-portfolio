@@ -20,7 +20,7 @@ export default function Projects() {
                         </div>
                     </div>
                     <div className="p-6 bg-slate-950/50 backdrop-blur-sm">
-                        <h3 className="text-2xl font-semibold mb-2">E-Commerce Platform</h3>
+                        <h3 className="text-2xl font-semibold mb-2">RBased GIS System</h3>
                         <p className="text-gray-300 mb-4">
                             A full-stack e-commerce platform built with React, Node.js, and PostgreSQL.
                             Features include user authentication, product filtering, cart functionality,
@@ -28,16 +28,16 @@ export default function Projects() {
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
                             <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">React</span>
-                            <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">Node.js</span>
+                            <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">NextJS</span>
                             <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
-                            <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">Stripe</span>
+                            <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">Framer-Motion</span>
                         </div>
                         <div className="flex space-x-4">
-                            <a href="https://amazon.in" target="_blank" rel="noopener noreferrer" 
+                            <a href="https://rbased-pvt-ltd-five.vercel.app/" target="_blank" rel="noopener noreferrer" 
                                className="bg-purple-900/50 hover:bg-purple-700/50 text-white px-4 py-2 rounded-md transition-colors">
                                 View Live
                             </a>
-                            <a href="https://github.com/myusername/project1" target="_blank" rel="noopener noreferrer"
+                            <a href="https://github.com/gulshank0/rbased-pvt-ltd" target="_blank" rel="noopener noreferrer"
                                className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-md transition-colors">
                                 Source Code
                             </a>
