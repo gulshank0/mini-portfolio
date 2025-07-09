@@ -22,9 +22,8 @@ export default function Projects() {
                     <div className="p-6 bg-slate-950/50 backdrop-blur-sm">
                         <h3 className="text-2xl font-semibold mb-2">RBased GIS System</h3>
                         <p className="text-gray-300 mb-4">
-                            A full-stack e-commerce platform built with React, Node.js, and PostgreSQL.
-                            Features include user authentication, product filtering, cart functionality,
-                            and payment processing.
+                            A full-stack NextJS App which shows the platform of RBased organisation built with React, NextJS, and PostgreSQL and Prisma ORM.
+                           
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
                             <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">React</span>
@@ -62,8 +61,7 @@ export default function Projects() {
                     <div className="p-6">
                         <h3 className="text-2xl font-semibold mb-2">AI Content Generator</h3>
                         <p className="text-gray-300 mb-4">
-                            An AI-powered content generation tool that creates blog posts, product descriptions,
-                            and social media content. Built with Next.js and integrated with OpenAI API.
+                            An AI-powered Web-App generation tool that creates basic Boilerplate code of Starting the project. Built with React, NodeJS as backend, and integrated with Gemini API.
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
                             <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">React</span>
