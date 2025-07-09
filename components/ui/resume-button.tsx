@@ -16,7 +16,7 @@ export function AnimatedResumeButton() {
       asChild
     >
       <a
-        href="https://drive.google.com/"
+        href="https://drive.google.com/file/d/1ldW4K7bxsSt48FRFdukurBYHU-jdjnhH/view?usp=drive_link"
         target="_blank"
         rel="noopener noreferrer"
         download

@@ -11,7 +11,7 @@ export default function Projects() {
                         <Image
                         width={800}
                         height={400} 
-                            src="/amazon.jpg" 
+                            src="/img-1.png" 
                             alt="Project 1" 
                             className="w-full h-64 object-cover"
                         />
@@ -66,17 +66,14 @@ export default function Projects() {
                             and social media content. Built with Next.js and integrated with OpenAI API.
                         </p>
                         <div className="flex flex-wrap gap-2 mb-4">
-                            <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">Next.js</span>
+                            <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">React</span>
                             <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">TypeScript</span>
                             <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">Tailwind CSS</span>
-                            <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">OpenAI API</span>
+                            <span className="bg-slate-700 px-3 py-1 rounded-full text-sm">Gemini API</span>
                         </div>
                         <div className="flex space-x-4">
-                            <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"
-                               className="bg-purple-900/50 hover:bg-purple-700/50 text-white px-4 py-2 rounded-md transition-colors">
-                                View Live
-                            </a>
-                            <a href="https://github.com/myusername/project2" target="_blank" rel="noopener noreferrer"
+                           
+                            <a href="https://github.com/gulshank0/bolt-clone" target="_blank" rel="noopener noreferrer"
                                className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-md transition-colors">
                                 Source Code
                             </a>
