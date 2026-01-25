@@ -1,8 +1,8 @@
-import Navbar from "@/components/ui/Navbar";
 import { HeroGeometric } from "../components/ui/shape-landing-hero";
 import Skills from "@/components/ui/pages/Skills";
 import Projects from "@/components/ui/pages/Projects";
 import Contact from "@/components/ui/pages/Contact";
+import Sidebar from "@/components/Sidebar";
 
 export default function Home() {
   
@@ -10,7 +10,7 @@ export default function Home() {
   
   return ( 
 <div>   
-  <Navbar/>
+  <Sidebar/>
 <section id="home">
     <HeroGeometric />
 </section>

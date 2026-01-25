@@ -154,7 +154,7 @@ function HeroGeometric() {
                         animate="visible"
                     >
                         
-                        <div className="flex items-center justify-center mb-4  ">  
+                        <div className="flex items-center justify-center">  
                             <div className="bg-[url(/gulshan.jpeg)] h-50 w-50 rounded-full bg-cover bg-center"></div> 
                         </div>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl text-white/80 mb-4 leading-tight tracking-tight">
