@@ -22,6 +22,16 @@ import {
   SiNodedotjs,
   SiWebrtc,
   SiShadcnui,
+  SiLeetcode,
+  SiPrometheus,
+  SiTerraform,
+  SiJenkins,
+  SiGrafana,
+  SiKubernetes,
+  SiKibana,
+  SiRedis,
+  SiStripe,
+  SiApachekafka,
 } from "react-icons/si";
 
 const skills = [
@@ -45,6 +55,16 @@ const skills = [
   { name: "Node.js", icon: SiNodedotjs, color: "#339933", progress: 85 },
   { name: "WebRTC", icon: SiWebrtc, color: "#4A90E2", progress: 70 },
   { name: "shadcn/ui", icon: SiShadcnui, color: "#FBBF24", progress: 75 },
+  { name: "Leetcode", icon: SiLeetcode, color: "#FBBF24", progress: 75 },
+  {name: "prometheus", icon: SiPrometheus, color: "#FBBF24", progress: 75 },
+  {name: "grafana", icon: SiGrafana, color: "#FBBF24", progress: 75 },
+  {name: "kubernetes", icon: SiKubernetes, color: "#FBBF24", progress: 75 },
+  {name: "terraform", icon: SiTerraform, color: "#FBBF24", progress: 75 },
+  {name: "kibana", icon: SiKibana, color: "#FBBF24", progress: 75 },
+  {name: "jenkins", icon: SiJenkins, color: "#FBBF24", progress: 75 },
+  {name: "redis", icon: SiRedis, color: "#FBBF24", progress: 75 },
+  {name: "stripe", icon: SiStripe, color: "#FBBF24", progress: 75 },
+  {name: "kafka", icon: SiApachekafka, color: "#FBBF24", progress: 75 },
 ];
 
 export default function Skills() {
