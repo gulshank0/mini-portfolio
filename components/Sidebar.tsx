@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Logo from "./ui/logo";
 import { AnimatedResumeButton } from "./ui/resume-button";
 import { Home, Code2, FolderKanban, Mail, X, Menu } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -21,6 +22,7 @@ export default function Sidebar() {
 
   const navItems = [
     { href: "#home", label: "Home", icon: Home },
+    { href: "#github", label: "GitHub", icon: SiGithub },
     { href: "#skills", label: "Skills", icon: Code2 },
     { href: "#projects", label: "Projects", icon: FolderKanban },
     { href: "#contact", label: "Contact", icon: Mail },
