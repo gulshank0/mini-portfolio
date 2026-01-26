@@ -47,20 +47,20 @@ const projects = [
 
 export default function Projects() {
   return (
-    <div className="flex flex-col gap-6 pt-24 pb-16 px-6 ml-64 bg-black text-white min-h-screen">
+    <div className="flex flex-col gap-6 pt-16 sm:pt-20 lg:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 lg:ml-64 bg-black text-white min-h-screen">
       <div className="max-w-6xl mx-auto w-full">
-        <h2 className="text-2xl font-bold text-center mb-8 text-white bg-clip-text text-transparent">
+        <h2 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 text-white bg-clip-text text-transparent">
           My Projects
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {projects.map((project, index) => (
             <div
               key={index}
               className="group relative bg-gradient-to-br from-gray-900 to-gray-950 rounded-xl overflow-hidden border border-gray-800/50 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10"
             >
               {/* Image Container */}
-              <div className="relative h-40 overflow-hidden">
+              <div className="relative h-32 sm:h-36 md:h-40 overflow-hidden">
                 <Image
                   width={400}
                   height={200}
@@ -71,31 +71,31 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
 
                 {/* Status Badge */}
-                <div className="absolute top-3 right-3">
+                <div className="absolute top-2 sm:top-3 right-2 sm:right-3">
                   <span
-                    className={`${project.statusColor} text-white text-xs font-medium px-2.5 py-1 rounded-full flex items-center gap-1`}
+                    className={`${project.statusColor} text-white text-[10px] sm:text-xs font-medium px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full flex items-center gap-1`}
                   >
-                    <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+                    <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-white rounded-full animate-pulse" />
                     {project.status}
                   </span>
                 </div>
               </div>
 
               {/* Content */}
-              <div className="p-4">
-                <h3 className="text-lg font-semibold mb-1.5 text-white group-hover:text-purple-300 transition-colors">
+              <div className="p-3 sm:p-4">
+                <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-1.5 text-white group-hover:text-purple-300 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 text-sm mb-3 line-clamp-2 leading-relaxed">
+                <p className="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2 leading-relaxed">
                   {project.description}
                 </p>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
+                <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-3 sm:mb-4">
                   {project.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="bg-gray-800/80 text-gray-300 text-xs px-2 py-0.5 rounded-md border border-gray-700/50"
+                      className="bg-gray-800/80 text-gray-300 text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-md border border-gray-700/50"
                     >
                       {tag}
                     </span>
@@ -109,10 +109,14 @@ export default function Projects() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-1.5 bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors"
+                      className="flex-1 flex items-center justify-center gap-1 sm:gap-1.5 bg-purple-600 hover:bg-purple-500 text-white text-xs sm:text-sm font-medium py-1.5 sm:py-2 px-2 sm:px-3 rounded-lg transition-colors"
                     >
-                      <ExternalLink size={14} />
-                      Live Demo
+                      <ExternalLink
+                        size={12}
+                        className="sm:w-[14px] sm:h-[14px]"
+                      />
+                      <span className="hidden xs:inline">Live Demo</span>
+                      <span className="xs:hidden">Live</span>
                     </a>
                   )}
                   <a
@@ -121,9 +125,9 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     className={`${
                       project.liveUrl ? "flex-1" : "w-full"
-                    } flex items-center justify-center gap-1.5 bg-gray-800 hover:bg-gray-700 text-white text-sm font-medium py-2 px-3 rounded-lg border border-gray-700 transition-colors`}
+                    } flex items-center justify-center gap-1 sm:gap-1.5 bg-gray-800 hover:bg-gray-700 text-white text-xs sm:text-sm font-medium py-1.5 sm:py-2 px-2 sm:px-3 rounded-lg border border-gray-700 transition-colors`}
                   >
-                    <Github size={14} />
+                    <Github size={12} className="sm:w-[14px] sm:h-[14px]" />
                     Source
                   </a>
                 </div>

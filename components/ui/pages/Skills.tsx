@@ -56,24 +56,24 @@ const skills = [
   { name: "WebRTC", icon: SiWebrtc, color: "#4A90E2", progress: 70 },
   { name: "shadcn/ui", icon: SiShadcnui, color: "#FBBF24", progress: 75 },
   { name: "Leetcode", icon: SiLeetcode, color: "#FBBF24", progress: 75 },
-  {name: "prometheus", icon: SiPrometheus, color: "#FBBF24", progress: 75 },
-  {name: "grafana", icon: SiGrafana, color: "#FBBF24", progress: 75 },
-  {name: "kubernetes", icon: SiKubernetes, color: "#FBBF24", progress: 75 },
-  {name: "terraform", icon: SiTerraform, color: "#FBBF24", progress: 75 },
-  {name: "kibana", icon: SiKibana, color: "#FBBF24", progress: 75 },
-  {name: "jenkins", icon: SiJenkins, color: "#FBBF24", progress: 75 },
-  {name: "redis", icon: SiRedis, color: "#FBBF24", progress: 75 },
-  {name: "stripe", icon: SiStripe, color: "#FBBF24", progress: 75 },
-  {name: "kafka", icon: SiApachekafka, color: "#FBBF24", progress: 75 },
+  { name: "prometheus", icon: SiPrometheus, color: "#FBBF24", progress: 75 },
+  { name: "grafana", icon: SiGrafana, color: "#FBBF24", progress: 75 },
+  { name: "kubernetes", icon: SiKubernetes, color: "#FBBF24", progress: 75 },
+  { name: "terraform", icon: SiTerraform, color: "#FBBF24", progress: 75 },
+  { name: "kibana", icon: SiKibana, color: "#FBBF24", progress: 75 },
+  { name: "jenkins", icon: SiJenkins, color: "#FBBF24", progress: 75 },
+  { name: "redis", icon: SiRedis, color: "#FBBF24", progress: 75 },
+  { name: "stripe", icon: SiStripe, color: "#FBBF24", progress: 75 },
+  { name: "kafka", icon: SiApachekafka, color: "#FBBF24", progress: 75 },
 ];
 
 export default function Skills() {
   return (
-    <div className="space-y-8 py-6 px-6 ml-64 bg-black backdrop-blur-sm border-b border-purple-500/20">
-      <h1 className="lg:text-3xl text-xl text-center text-gray-200 font-bold gradient-text">
+    <div className="space-y-6 sm:space-y-8 py-4 sm:py-6 px-4 sm:px-6 lg:ml-64 bg-black backdrop-blur-sm border-b border-purple-500/20">
+      <h1 className="text-xl sm:text-2xl lg:text-3xl text-center text-gray-200 font-bold gradient-text">
         My Tools
       </h1>
-      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4">
         {skills.map((skill, index) => (
           <SkillCard key={skill.name} skill={skill} index={index} />
         ))}
@@ -93,20 +93,19 @@ function SkillCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
     >
       <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 bg-gradient-to-br from-purple-900/50 to-gray-900/50 backdrop-blur-sm border-purple-500/20">
-        <CardContent className="p-4">
+        <CardContent className="p-2 sm:p-3 md:p-4">
           <div className="flex flex-col items-center justify-center">
             <skill.icon
-              className="w-8 h-8 mb-2"
+              className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 mb-1 sm:mb-2"
               style={{ color: skill.color }}
             />
-            <h3 className="text-sm font-semibold text-purple-100 text-center">
+            <h3 className="text-[10px] sm:text-xs md:text-sm font-semibold text-purple-100 text-center leading-tight">
               {skill.name}
             </h3>
           </div>
-          {/* <Progress value={skill.progress} className="h-2 bg-purple-950" indicatorClassName="bg-gradient-to-r from-purple-500 to-pink-500" /> */}
         </CardContent>
       </Card>
     </motion.div>

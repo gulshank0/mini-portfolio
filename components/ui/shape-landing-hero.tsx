@@ -89,19 +89,20 @@ function HeroGeometric() {
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030303]">
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
 
-      {/* Resume Button - Top Right Corner */}
-      <div className="absolute top-6 right-6 z-50">
+      {/* Resume Button - Top Right Corner - Hidden on mobile as it's in sidebar */}
+      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 hidden sm:block">
         <AnimatedResumeButton />
       </div>
 
       <div className="absolute inset-0 overflow-hidden">
+        {/* Responsive shapes - smaller on mobile */}
         <ElegantShape
           delay={0.3}
           width={600}
           height={140}
           rotate={12}
           gradient="from-indigo-500/[0.15]"
-          className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
+          className="left-[-20%] sm:left-[-10%] lg:left-[-5%] top-[15%] md:top-[20%] scale-50 sm:scale-75 lg:scale-100"
         />
 
         <ElegantShape
@@ -110,7 +111,7 @@ function HeroGeometric() {
           height={120}
           rotate={-15}
           gradient="from-rose-500/[0.15]"
-          className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
+          className="right-[-15%] sm:right-[-5%] lg:right-[0%] top-[70%] md:top-[75%] scale-50 sm:scale-75 lg:scale-100"
         />
 
         <ElegantShape
@@ -119,7 +120,7 @@ function HeroGeometric() {
           height={80}
           rotate={-8}
           gradient="from-violet-500/[0.15]"
-          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
+          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%] scale-50 sm:scale-75 lg:scale-100"
         />
 
         <ElegantShape
@@ -128,7 +129,7 @@ function HeroGeometric() {
           height={60}
           rotate={20}
           gradient="from-amber-500/[0.15]"
-          className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
+          className="right-[10%] sm:right-[15%] lg:right-[20%] top-[10%] md:top-[15%] scale-50 sm:scale-75 lg:scale-100"
         />
 
         <ElegantShape
@@ -137,17 +138,19 @@ function HeroGeometric() {
           height={40}
           rotate={-25}
           gradient="from-cyan-500/[0.15]"
-          className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
+          className="left-[15%] sm:left-[20%] lg:left-[25%] top-[5%] md:top-[10%] scale-50 sm:scale-75 lg:scale-100"
         />
       </div>
-      <div className="relative z-10 container mx-auto px-4 md:px-6 pl-64">
+
+      {/* Main content - responsive with sidebar offset on desktop only */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:pl-64">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             custom={0}
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-8 md:mb-12"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-6 sm:mb-8 lg:mb-12"
           ></motion.div>
 
           <motion.div
@@ -156,49 +159,47 @@ function HeroGeometric() {
             initial="hidden"
             animate="visible"
           >
-            <div className="flex items-center justify-center ml-28">
-              <div className="bg-[url(/gulshan.jpeg)] h-50 w-50 rounded-full bg-cover bg-center mb-8"></div>
+            {/* Profile image - responsive sizing */}
+            <div className="flex items-center justify-center">
+              <div className="bg-[url(/gulshan.jpeg)] h-32 w-32 sm:h-40 sm:w-40 lg:h-50 lg:w-50 rounded-full bg-cover bg-center mb-6 sm:mb-8"></div>
             </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl text-white/80 mb-4 leading-tight tracking-wide ml-28">
+
+            {/* Name - responsive text size */}
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/80 mb-3 sm:mb-4 leading-tight tracking-wide">
               Gulshan Kumar
             </h2>
 
-            <p className="text-base sm:text-xl md:text-xl text-white/90 leading-relaxed font-light tracking-wide max-w-xl mx-auto ml-28 pt-8">
+            {/* Tagline - responsive text size and padding */}
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4 sm:px-0 pt-4 sm:pt-6 lg:pt-8">
               Developing exceptional digital experiences through innovative Idea
               and cutting-edge technology.
             </p>
 
-            <div className="flex flex-col items-center justify-center mt-8 ml-28">
-              <div className="mb-4">
-                <a
-                  href="https://github.com/gulshank0"
-                  className="inline-flex items-center justify-center px-50 py-3 text-sm font-medium text-white bg-transparent border border-white/[0.08] rounded-md hover:bg-white/[0.03] shadow-md hover:shadow-lg transition duration-200 ease-in-out"
-                >
-                  {" "}
-                  <Github className="mr-3" size={16} />
-                  GitHub
-                </a>
-              </div>
+            {/* Social buttons - responsive layout */}
+            <div className="flex flex-col items-center justify-center mt-6 sm:mt-8 gap-3 sm:gap-4">
+              <a
+                href="https://github.com/gulshank0"
+                className="w-full max-w-[280px] sm:max-w-[320px] inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white bg-transparent border border-white/[0.08] rounded-md hover:bg-white/[0.03] shadow-md hover:shadow-lg transition duration-200 ease-in-out"
+              >
+                <Github className="mr-2 sm:mr-3" size={14} />
+                GitHub
+              </a>
 
-              <div className="mb-4">
-                <a
-                  href="https://x.com/gulshank0"
-                  className="inline-flex items-center justify-center px-50 py-3 text-sm font-medium text-white bg-transparent border border-white/[0.08] rounded-md hover:bg-white/[0.03] shadow-md hover:shadow-lg transition duration-200 ease-in-out"
-                >
-                  <Twitter className="mr-3" size={16} />
-                  Twitter
-                </a>
-              </div>
+              <a
+                href="https://x.com/gulshank0"
+                className="w-full max-w-[280px] sm:max-w-[320px] inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white bg-transparent border border-white/[0.08] rounded-md hover:bg-white/[0.03] shadow-md hover:shadow-lg transition duration-200 ease-in-out"
+              >
+                <Twitter className="mr-2 sm:mr-3" size={14} />
+                Twitter
+              </a>
 
-              <div>
-                <a
-                  href="https://www.linkedin.com/in/gulshan-kumar-872512270/"
-                  className="inline-flex items-center justify-center px-50 py-3 text-sm font-medium text-white bg-transparent border border-white/[0.08] rounded-md hover:bg-white/[0.03] transition duration-200 ease-in-out"
-                >
-                  <Linkedin className="mr-3" size={16} />
-                  LinkedIn
-                </a>
-              </div>
+              <a
+                href="https://www.linkedin.com/in/gulshan-kumar-872512270/"
+                className="w-full max-w-[280px] sm:max-w-[320px] inline-flex items-center justify-center px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white bg-transparent border border-white/[0.08] rounded-md hover:bg-white/[0.03] transition duration-200 ease-in-out"
+              >
+                <Linkedin className="mr-2 sm:mr-3" size={14} />
+                LinkedIn
+              </a>
             </div>
           </motion.div>
         </div>

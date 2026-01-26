@@ -116,31 +116,35 @@ export default function Github() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 ml-64 bg-black text-white min-h-[400px]">
-        <Loader2 className="w-10 h-10 animate-spin text-purple-500 mb-4" />
-        <p className="text-gray-400">Loading GitHub activity...</p>
+      <div className="flex flex-col items-center justify-center py-16 sm:py-20 px-4 lg:ml-64 bg-black text-white min-h-[300px] sm:min-h-[400px]">
+        <Loader2 className="w-8 h-8 sm:w-10 sm:h-10 animate-spin text-purple-500 mb-3 sm:mb-4" />
+        <p className="text-gray-400 text-sm sm:text-base">
+          Loading GitHub activity...
+        </p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 ml-64 bg-black text-white min-h-[400px]">
-        <p className="text-red-400 mb-2">Failed to load GitHub activity</p>
-        <p className="text-gray-500 text-sm">{error}</p>
+      <div className="flex flex-col items-center justify-center py-16 sm:py-20 px-4 lg:ml-64 bg-black text-white min-h-[300px] sm:min-h-[400px]">
+        <p className="text-red-400 mb-2 text-sm sm:text-base">
+          Failed to load GitHub activity
+        </p>
+        <p className="text-gray-500 text-xs sm:text-sm">{error}</p>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-12 pt-20 pb-20 px-8 ml-64 bg-black text-white">
+    <div className="flex flex-col gap-8 sm:gap-10 lg:gap-12 pt-16 sm:pt-18 lg:pt-20 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 lg:ml-64 bg-black text-white">
       {/* Header */}
       <div className="text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold mb-3"
+          className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3"
         >
           GitHub Contributions
         </motion.h2>
@@ -148,7 +152,7 @@ export default function Github() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-gray-400"
+          className="text-gray-400 text-sm sm:text-base"
         >
           My recent open source contributions and pull requests
         </motion.p>
@@ -156,20 +160,20 @@ export default function Github() {
 
       {/* Merged PRs Section */}
       <section>
-        <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 rounded-lg bg-purple-500/20 border border-purple-500/30">
-            <GitMerge className="w-5 h-5 text-purple-400" />
+        <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+          <div className="p-1.5 sm:p-2 rounded-lg bg-purple-500/20 border border-purple-500/30">
+            <GitMerge className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
           </div>
-          <h3 className="text-xl font-semibold text-white">
+          <h3 className="text-lg sm:text-xl font-semibold text-white">
             Recently Merged PRs
           </h3>
-          <span className="px-2 py-0.5 text-sm rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+          <span className="px-1.5 sm:px-2 py-0.5 text-xs sm:text-sm rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
             {mergedPRs.length}
           </span>
         </div>
 
         {mergedPRs.length === 0 ? (
-          <p className="text-gray-500 text-center py-8">
+          <p className="text-gray-500 text-center py-6 sm:py-8 text-sm sm:text-base">
             No merged PRs found yet
           </p>
         ) : (
@@ -189,18 +193,20 @@ export default function Github() {
 
       {/* Open PRs Section */}
       <section>
-        <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 rounded-lg bg-green-500/20 border border-green-500/30">
-            <GitPullRequest className="w-5 h-5 text-green-400" />
+        <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+          <div className="p-1.5 sm:p-2 rounded-lg bg-green-500/20 border border-green-500/30">
+            <GitPullRequest className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
           </div>
-          <h3 className="text-xl font-semibold text-white">Open PRs</h3>
-          <span className="px-2 py-0.5 text-sm rounded-full bg-green-500/20 text-green-300 border border-green-500/30">
+          <h3 className="text-lg sm:text-xl font-semibold text-white">
+            Open PRs
+          </h3>
+          <span className="px-1.5 sm:px-2 py-0.5 text-xs sm:text-sm rounded-full bg-green-500/20 text-green-300 border border-green-500/30">
             {openPRs.length}
           </span>
         </div>
 
         {openPRs.length === 0 ? (
-          <p className="text-gray-500 text-center py-8">
+          <p className="text-gray-500 text-center py-6 sm:py-8 text-sm sm:text-base">
             No open PRs at the moment
           </p>
         ) : (
@@ -229,10 +235,10 @@ export default function Github() {
           href={`https://github.com/${GITHUB_USERNAME}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30 hover:text-white transition-all duration-300"
+          className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg bg-purple-500/20 border border-purple-500/30 text-purple-300 hover:bg-purple-500/30 hover:text-white transition-all duration-300 text-sm sm:text-base"
         >
           View Full GitHub Profile
-          <ExternalLink className="w-4 h-4" />
+          <ExternalLink className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </a>
       </motion.div>
     </div>
@@ -262,7 +268,7 @@ function PRCard({
         href={pr.html_url}
         target="_blank"
         rel="noopener noreferrer"
-        className={`flex items-center gap-3 px-4 py-3 rounded-lg border transition-all duration-200 hover:scale-[1.01] ${
+        className={`flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg border transition-all duration-200 hover:scale-[1.01] ${
           isMerged
             ? "bg-purple-900/20 border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-900/30"
             : "bg-green-900/20 border-green-500/20 hover:border-green-500/40 hover:bg-green-900/30"
@@ -273,15 +279,15 @@ function PRCard({
           className={`flex-shrink-0 ${isMerged ? "text-purple-400" : "text-green-400"}`}
         >
           {isMerged ? (
-            <GitMerge className="w-4 h-4" />
+            <GitMerge className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           ) : (
-            <GitPullRequest className="w-4 h-4" />
+            <GitPullRequest className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           )}
         </div>
 
         {/* PR Number */}
         <span
-          className={`flex-shrink-0 px-2 py-0.5 rounded text-xs font-mono ${
+          className={`flex-shrink-0 px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-mono ${
             isMerged
               ? "bg-purple-500/20 text-purple-300"
               : "bg-green-500/20 text-green-300"
@@ -291,23 +297,23 @@ function PRCard({
         </span>
 
         {/* PR Title */}
-        <span className="flex-1 text-white text-sm font-medium truncate hover:text-purple-300 transition-colors">
+        <span className="flex-1 text-white text-xs sm:text-sm font-medium truncate hover:text-purple-300 transition-colors">
           {pr.title}
         </span>
 
-        {/* Repository */}
-        <span className="flex-shrink-0 text-xs text-gray-500 hidden md:block">
+        {/* Repository - Hidden on small screens */}
+        <span className="flex-shrink-0 text-[10px] sm:text-xs text-gray-500 hidden md:block max-w-[150px] truncate">
           {pr.repo_owner}/{pr.repo_name}
         </span>
 
-        {/* Date */}
-        <span className="flex-shrink-0 text-xs text-gray-500 hidden lg:flex items-center gap-1">
-          <Calendar className="w-3 h-3" />
+        {/* Date - Hidden on small screens */}
+        <span className="flex-shrink-0 text-[10px] sm:text-xs text-gray-500 hidden lg:flex items-center gap-1">
+          <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
           {formatDate(isMerged && pr.merged_at ? pr.merged_at : pr.created_at)}
         </span>
 
         {/* External Link Icon */}
-        <ExternalLink className="w-3.5 h-3.5 text-gray-500 flex-shrink-0" />
+        <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-gray-500 flex-shrink-0" />
       </a>
     </motion.div>
   );

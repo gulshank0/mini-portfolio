@@ -1,14 +1,33 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "./ui/logo";
 import { AnimatedResumeButton } from "./ui/resume-button";
 import { Home, Code2, FolderKanban, Mail, X, Menu } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 
 export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
+
+  // Handle window resize
+  useEffect(() => {
+    const checkScreenSize = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      // On desktop, sidebar is always visible
+      if (!mobile) {
+        setIsOpen(true);
+      }
+    };
+
+    // Check on mount
+    checkScreenSize();
+
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
@@ -18,6 +37,10 @@ export default function Sidebar() {
       left: 0,
       behavior: "smooth",
     });
+    // Close sidebar on mobile after navigation
+    if (isMobile) {
+      setIsOpen(false);
+    }
   };
 
   const navItems = [
@@ -30,10 +53,10 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Floating Open Button - Visible when sidebar is closed */}
+      {/* Mobile Hamburger Button - Fixed on top-left */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed top-6 left-6 z-50 p-3 rounded-xl bg-purple-500/20 backdrop-blur-xl border border-purple-500/30 text-purple-300 hover:text-white hover:bg-purple-500/30 transition-all duration-300 shadow-lg shadow-purple-500/20 ${
+        className={`fixed top-4 left-4 z-50 p-3 rounded-xl bg-purple-500/20 backdrop-blur-xl border border-purple-500/30 text-purple-300 hover:text-white hover:bg-purple-500/30 transition-all duration-300 shadow-lg shadow-purple-500/20 lg:hidden ${
           isOpen
             ? "opacity-0 pointer-events-none scale-90"
             : "opacity-100 scale-100"
@@ -43,16 +66,24 @@ export default function Sidebar() {
         <Menu className="w-6 h-6" />
       </button>
 
+      {/* Backdrop for mobile */}
+      {isOpen && isMobile && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
       <aside
         className={`fixed left-0 top-0 h-screen w-64 bg-black/10 backdrop-blur-2xl border-r border-purple-500/20 z-50 flex flex-col shadow-2xl shadow-purple-500/10 transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Close Button */}
+        {/* Close Button - Only visible on mobile */}
         <button
           onClick={() => setIsOpen(false)}
-          className="absolute top-4 right-4 p-2 rounded-lg text-gray-400 hover:text-white hover:bg-purple-500/20 transition-all duration-300 z-10"
+          className="absolute top-4 right-4 p-2 rounded-lg text-gray-400 hover:text-white hover:bg-purple-500/20 transition-all duration-300 z-10 lg:hidden"
           aria-label="Close sidebar"
         >
           <X className="w-5 h-5" />
