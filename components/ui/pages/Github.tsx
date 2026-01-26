@@ -39,12 +39,12 @@ export default function Github() {
 
         // Fetch merged PRs (contributions to other repos)
         const mergedResponse = await fetch(
-          `https://api.github.com/search/issues?q=author:${GITHUB_USERNAME}+type:pr+is:merged&sort=updated&order=desc&per_page=6`,
+          `https://api.github.com/search/issues?q=author:${GITHUB_USERNAME}+type:pr+is:merged&sort=updated&order=desc&per_page=100`,
         );
 
         // Fetch open PRs
         const openResponse = await fetch(
-          `https://api.github.com/search/issues?q=author:${GITHUB_USERNAME}+type:pr+is:open&sort=updated&order=desc&per_page=6`,
+          `https://api.github.com/search/issues?q=author:${GITHUB_USERNAME}+type:pr+is:open&sort=updated&order=desc&per_page=100`,
         );
 
         if (!mergedResponse.ok || !openResponse.ok) {

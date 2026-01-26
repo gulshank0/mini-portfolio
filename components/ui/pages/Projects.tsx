@@ -14,12 +14,12 @@ const projects = [
     statusColor: "bg-emerald-500",
   },
   {
-    title: "AI Content Generator",
+    title: "Happy Heads",
     description:
-      "AI-powered tool generating boilerplate code for projects using Gemini API.",
-    image: "/chat.png",
-    tags: ["React", "TypeScript", "Gemini API"],
-    githubUrl: "https://github.com/gulshank0/bolt-clone",
+      "Full-stack application built with modern web technologies for managing and organizing content.",
+    image: "/happy.png",
+    tags: ["Next.js", "TypeScript", "PostgreSQL"],
+    githubUrl: "https://github.com/gulshank0/Happy-heads",
     status: "Live",
     statusColor: "bg-emerald-500",
   },
@@ -27,7 +27,7 @@ const projects = [
     title: "RevShare",
     description:
       "YouTube Channel Exchange Platform for revenue-sharing and fractional stakes.",
-    image: "/revshare.png",
+    image: "/revShare.png",
     tags: ["Next.js 14", "PostgreSQL", "Stripe"],
     githubUrl: "https://github.com/gulshank0/RevShare",
     status: "Building",
@@ -37,7 +37,7 @@ const projects = [
     title: "Document Organiser",
     description:
       "Smart document management app for efficient organization and categorization.",
-    image: "/document-organiser.png",
+    image: "/s-docs.png",
     tags: ["React", "TypeScript", "Node.js"],
     githubUrl: "https://github.com/gulshank0/Document-Orgeaniser",
     status: "Building",
