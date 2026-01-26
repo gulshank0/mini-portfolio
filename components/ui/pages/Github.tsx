@@ -2,13 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   GitMerge,
   GitPullRequest,
   ExternalLink,
   Calendar,
-  GitBranch,
   Loader2,
 } from "lucide-react";
 
@@ -175,7 +173,7 @@ export default function Github() {
             No merged PRs found yet
           </p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="flex flex-col gap-2">
             {mergedPRs.map((pr, index) => (
               <PRCard
                 key={pr.id}
@@ -206,7 +204,7 @@ export default function Github() {
             No open PRs at the moment
           </p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="flex flex-col gap-2">
             {openPRs.map((pr, index) => (
               <PRCard
                 key={pr.id}
@@ -256,69 +254,61 @@ function PRCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
     >
-      <Card
-        className={`overflow-hidden hover:shadow-lg transition-all duration-300 bg-gradient-to-br ${
+      <a
+        href={pr.html_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`flex items-center gap-3 px-4 py-3 rounded-lg border transition-all duration-200 hover:scale-[1.01] ${
           isMerged
-            ? "from-purple-900/30 to-gray-900/50 border-purple-500/20 hover:border-purple-500/40"
-            : "from-green-900/30 to-gray-900/50 border-green-500/20 hover:border-green-500/40"
-        } backdrop-blur-sm h-full`}
+            ? "bg-purple-900/20 border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-900/30"
+            : "bg-green-900/20 border-green-500/20 hover:border-green-500/40 hover:bg-green-900/30"
+        }`}
       >
-        <CardContent className="p-5">
-          {/* Repository Info */}
-          <div className="flex items-center gap-2 mb-3">
-            <GitBranch
-              className={`w-4 h-4 ${
-                isMerged ? "text-purple-400" : "text-green-400"
-              }`}
-            />
-            <a
-              href={`https://github.com/${pr.repo_owner}/${pr.repo_name}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-gray-400 hover:text-white transition-colors truncate"
-            >
-              {pr.repo_owner}/{pr.repo_name}
-            </a>
-          </div>
+        {/* Status Icon */}
+        <div
+          className={`flex-shrink-0 ${isMerged ? "text-purple-400" : "text-green-400"}`}
+        >
+          {isMerged ? (
+            <GitMerge className="w-4 h-4" />
+          ) : (
+            <GitPullRequest className="w-4 h-4" />
+          )}
+        </div>
 
-          {/* PR Title */}
-          <a
-            href={pr.html_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block group"
-          >
-            <h4 className="text-white font-medium mb-3 line-clamp-2 group-hover:text-purple-300 transition-colors">
-              {pr.title}
-            </h4>
-          </a>
+        {/* PR Number */}
+        <span
+          className={`flex-shrink-0 px-2 py-0.5 rounded text-xs font-mono ${
+            isMerged
+              ? "bg-purple-500/20 text-purple-300"
+              : "bg-green-500/20 text-green-300"
+          }`}
+        >
+          #{pr.number}
+        </span>
 
-          {/* PR Meta */}
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-2 text-gray-500">
-              <Calendar className="w-3.5 h-3.5" />
-              <span>
-                {formatDate(
-                  isMerged && pr.merged_at ? pr.merged_at : pr.created_at,
-                )}
-              </span>
-            </div>
-            <span
-              className={`px-2 py-0.5 rounded-full text-xs ${
-                isMerged
-                  ? "bg-purple-500/20 text-purple-300"
-                  : "bg-green-500/20 text-green-300"
-              }`}
-            >
-              #{pr.number}
-            </span>
-          </div>
-        </CardContent>
-      </Card>
+        {/* PR Title */}
+        <span className="flex-1 text-white text-sm font-medium truncate hover:text-purple-300 transition-colors">
+          {pr.title}
+        </span>
+
+        {/* Repository */}
+        <span className="flex-shrink-0 text-xs text-gray-500 hidden md:block">
+          {pr.repo_owner}/{pr.repo_name}
+        </span>
+
+        {/* Date */}
+        <span className="flex-shrink-0 text-xs text-gray-500 hidden lg:flex items-center gap-1">
+          <Calendar className="w-3 h-3" />
+          {formatDate(isMerged && pr.merged_at ? pr.merged_at : pr.created_at)}
+        </span>
+
+        {/* External Link Icon */}
+        <ExternalLink className="w-3.5 h-3.5 text-gray-500 flex-shrink-0" />
+      </a>
     </motion.div>
   );
 }
