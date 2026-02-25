@@ -11,6 +11,7 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -22,16 +23,35 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError("");
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch("https://formspree.io/f/xreajzrq", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
-
-    // Reset success message after 3 seconds
-    setTimeout(() => setIsSubmitted(false), 3000);
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        const data = await response.json();
+        setError(data?.errors?.[0]?.message || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants = {
@@ -122,6 +142,16 @@ export default function Contact() {
                 Thank you for your message! I will get back to you soon.
               </motion.div>
             ) : (
+              <>
+              {error && (
+                <motion.div
+                  className="bg-red-500/20 border border-red-500 text-red-300 p-3 sm:p-4 rounded-lg text-center text-sm sm:text-base mb-4"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                >
+                  {error}
+                </motion.div>
+              )}
               <form onSubmit={handleSubmit}>
                 <div className="mb-3 sm:mb-4">
                   <label
@@ -187,6 +217,7 @@ export default function Contact() {
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </motion.button>
               </form>
+              </>
             )}
           </motion.div>
 
