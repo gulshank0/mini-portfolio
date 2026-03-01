@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gulshan Kumar - Full Stack Developer",
+  title: "Gulshan Kumar",
   description:
     "Portfolio of Gulshan Kumar. Full Stack Developer building exceptional digital experiences through innovative ideas and cutting-edge technology.",
   icons: {
