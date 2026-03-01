@@ -1,30 +1,19 @@
-import { HeroGeometric } from "../components/ui/shape-landing-hero";
-import Skills from "@/components/ui/pages/Skills";
-import Projects from "@/components/ui/pages/Projects";
-import Github from "@/components/ui/pages/Github";
-import Contact from "@/components/ui/pages/Contact";
-import Sidebar from "@/components/Sidebar";
+import FloatingDock from "@/components/FloatingDock";
+import HeroIntro from "@/components/sections/HeroIntro";
+import Work from "@/components/sections/Work";
+import SkillsStrip from "@/components/sections/SkillsStrip";
+import GitHubSection from "@/components/sections/GitHubSection";
+import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <div>
-      <Sidebar />
-      <section id="home">
-        <HeroGeometric />
-      </section>
-<section id="github">
-        <Github />
-      </section>
-      <section id="skills">
-        <Skills />
-      </section>
-      <section id="projects">
-        <Projects />
-      </section>
-      
-      <section id="contact">
-        <Contact />
-      </section>
-    </div>
+    <main className="max-w-3xl mx-auto">
+      <HeroIntro />
+      <Work />
+      <SkillsStrip />
+      <GitHubSection />
+      <ContactSection />
+      <FloatingDock />
+    </main>
   );
 }

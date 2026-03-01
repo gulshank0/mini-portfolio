@@ -1,36 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
-const geistSans = Geist({
+const inter = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const jetbrainsMono = JetBrains_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Gulshan Kumar",
-  description: "social media links",
+  title: "Gulshan Kumar - Full Stack Developer",
+  description:
+    "Portfolio of Gulshan Kumar. Full Stack Developer building exceptional digital experiences through innovative ideas and cutting-edge technology.",
   icons: {
-    icon: [
-      {
-        url: "/ironman-4.jpg",
-        type: "image/jpg",
-      },
-    ],
-    shortcut: "/ironman-4.jpg",
-    apple: [
-      {
-        url: "/ironman-4.jpg",
-        sizes: "180x180",
-        type: "image/jpg",
-      }
-    ]
-  }
+    icon: [{ url: "/gulshan.jpeg", type: "image/jpeg" }],
+    shortcut: "/gulshan.jpeg",
+    apple: [{ url: "/gulshan.jpeg", sizes: "180x180", type: "image/jpeg" }],
+  },
 };
 
 export default function RootLayout({
@@ -39,11 +32,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${inter.variable} ${jetbrainsMono.variable}`}>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
