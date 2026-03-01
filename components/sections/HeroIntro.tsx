@@ -1,15 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Cloud, Clock, FileText } from "lucide-react";
 import { useTheme } from "../ThemeProvider";
 import Image from "next/image";
+import ProfileToast from "../ProfileToast";
 
 export default function HeroIntro() {
   const [time, setTime] = useState("");
   const [weather, setWeather] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
   const { theme } = useTheme();
+
+  const handleCloseToast = useCallback(() => setShowToast(false), []);
 
   useEffect(() => {
     const updateTime = () => {
@@ -84,26 +88,34 @@ export default function HeroIntro() {
         animate="visible"
         className="flex items-center gap-3 mb-6"
       >
-        <div className="w-12 h-12 rounded-full overflow-hidden border border-[var(--border)] flex-shrink-0">
-          <Image
-            src="/gulshan.jpeg"
-            alt="Gulshan Kumar"
-            width={96}
-            height={96}
-            quality={100}
-            priority
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div>
-          <h1 className="text-base font-semibold text-[var(--foreground)] leading-tight">
-            Gulshan Kumar
-          </h1>
-          <p className="text-sm text-[var(--muted-foreground)]">
-            Full Stack Developer
-          </p>
-        </div>
+        <button
+          onClick={() => setShowToast(true)}
+          className="flex items-center gap-3 cursor-pointer bg-transparent border-none p-0 text-left group"
+        >
+          <div className="w-12 h-12 rounded-full overflow-hidden border border-[var(--border)] flex-shrink-0 transition-all duration-200 group-hover:border-[var(--muted-foreground)] group-hover:shadow-md">
+            <Image
+              src="/gulshan.jpeg"
+              alt="Gulshan Kumar"
+              width={96}
+              height={96}
+              quality={100}
+              priority
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div>
+            <h1 className="text-base font-semibold text-[var(--foreground)] leading-tight group-hover:underline underline-offset-2">
+              Gulshan Kumar
+            </h1>
+            <p className="text-sm text-[var(--muted-foreground)]">
+              Full Stack Developer
+            </p>
+          </div>
+        </button>
       </motion.div>
+
+      {/* Profile Toast */}
+      <ProfileToast isOpen={showToast} onClose={handleCloseToast} />
 
       {/* Bio */}
       <motion.div
