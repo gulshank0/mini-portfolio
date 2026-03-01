@@ -59,7 +59,7 @@ const projects = [
     image: "/s-docs.png",
     tags: ["React", "TypeScript", "Node.js"],
     category: "PRODUCTIVITY",
-    githubUrl: "https://github.com/gulshank0/Document-Orgeaniser",
+    githubUrl: "https://github.com/gulshank0/Documents-Organiser",
   },
 ];
 
