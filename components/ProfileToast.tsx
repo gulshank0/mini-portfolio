@@ -76,7 +76,7 @@ export default function ProfileToast({ isOpen, onClose }: ProfileToastProps) {
                   alt="Gulshan Kumar"
                   width={320}
                   height={320}
-                  quality={100}
+                  unoptimized
                   className="w-full h-full object-cover"
                 />
               </div>
