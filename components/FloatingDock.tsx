@@ -7,6 +7,7 @@ import {
   Wrench,
   GitPullRequest,
   Mail,
+  FileText,
   Sun,
   Moon,
 } from "lucide-react";
@@ -17,6 +18,12 @@ const dockItems = [
   { icon: Briefcase, label: "Work", href: "#work" },
   { icon: Wrench, label: "Skills", href: "#skills" },
   { icon: GitPullRequest, label: "GitHub", href: "#github" },
+  {
+    icon: FileText,
+    label: "Resume",
+    href: "https://drive.google.com/file/d/12KgYzuxs4XmRKyV_srQvHMZWULpLE26j/view",
+    external: true,
+  },
   { icon: Mail, label: "Contact", href: "#contact" },
 ];
 
@@ -26,7 +33,9 @@ export default function FloatingDock() {
   const handleClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
+    external?: boolean,
   ) => {
+    if (external) return; // let browser handle external links
     e.preventDefault();
     const id = href.replace("#", "");
     const el = document.getElementById(id);
@@ -45,9 +54,12 @@ export default function FloatingDock() {
       <div className="flex items-center gap-1">
         {dockItems.map((item) => (
           <motion.a
-            key={item.href}
+            key={item.label}
             href={item.href}
-            onClick={(e) => handleClick(e, item.href)}
+            {...(item.external
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            onClick={(e) => handleClick(e, item.href, item.external)}
             className="relative group p-2.5 rounded-full text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors duration-200"
             whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.95 }}

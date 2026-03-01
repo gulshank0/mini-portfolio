@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Gulshan Kumar. Full Stack Developer building exceptional digital experiences through innovative ideas and cutting-edge technology.",
   icons: {
-    icon: [{ url: "/gulshan.jpeg", type: "image/jpeg" }],
-    shortcut: "/gulshan.jpeg",
-    apple: [{ url: "/gulshan.jpeg", sizes: "180x180", type: "image/jpeg" }],
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: "/favicon.png",
+    apple: [{ url: "/favicon.png", sizes: "180x180", type: "image/png" }],
   },
 };
 

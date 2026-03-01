@@ -29,17 +29,21 @@
   --accent-foreground: #1a1a1a;
 }
 
-/* Extreme dark theme */
+/* Extreme metallic dark theme */
 .dark {
   --background: #000000;
-  --foreground: #e5e5e5;
-  --card: #0a0a0a;
-  --card-foreground: #e5e5e5;
-  --border: #1a1a1a;
-  --muted: #0f0f0f;
-  --muted-foreground: #737373;
-  --accent: #111111;
-  --accent-foreground: #e5e5e5;
+  --foreground: #e4e4e7;
+  --card: #050507;
+  --card-foreground: #f4f4f5;
+  --border: #1a1a1e;
+  --muted: #0a0a0c;
+  --muted-foreground: #a1a1aa;
+  --accent: #0e0e12;
+  --accent-foreground: #f4f4f5;
+  --metallic-1: #d4d4d8;
+  --metallic-2: #a1a1aa;
+  --metallic-shine: #fafafa;
+  --metallic-glow: rgba(212, 212, 216, 0.12);
 }
 
 html {
@@ -61,6 +65,52 @@ html {
   }
 }
 
+/* Metallic gradient text — dark mode only */
+.dark .metallic-text {
+  background: linear-gradient(
+    135deg,
+    #e4e4e7 0%,
+    #a1a1aa 40%,
+    #d4d4d8 60%,
+    #71717a 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Metallic card glow — dark mode */
+.dark .metallic-card {
+  border-color: rgba(161, 161, 170, 0.18);
+  box-shadow:
+    0 0 20px rgba(192, 192, 192, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.dark .metallic-card:hover {
+  border-color: rgba(192, 192, 192, 0.25);
+  box-shadow:
+    0 0 30px rgba(192, 192, 192, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Metallic button */
+.metallic-btn {
+  background: linear-gradient(135deg, #27272a, #3f3f46, #27272a);
+  border: 1px solid rgba(161, 161, 170, 0.25);
+  color: #e4e4e7;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+.metallic-btn:hover {
+  background: linear-gradient(135deg, #3f3f46, #52525b, #3f3f46);
+  border-color: rgba(192, 192, 192, 0.35);
+  box-shadow:
+    0 2px 10px rgba(192, 192, 192, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -73,13 +123,13 @@ html {
   border-radius: 3px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: #3f3f46;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #a3a3a3;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+  background: #71717a;
 }
 
 /* Monospace section labels */
@@ -98,8 +148,11 @@ html {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
-/* Glassmorphism dock — dark */
+/* Glassmorphism dock — dark (metallic) */
 .dark .glass {
-  background: rgba(10, 10, 10, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(12, 12, 16, 0.85);
+  border: 1px solid rgba(161, 161, 170, 0.12);
+  box-shadow:
+    0 0 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }

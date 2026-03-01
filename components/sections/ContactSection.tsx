@@ -15,8 +15,8 @@ const socialLinks = [
   {
     name: "LinkedIn",
     icon: FaLinkedin,
-    href: "https://www.linkedin.com/in/gulshan-kumar-872512270/",
-    value: "gulshan-kumar",
+    href: "https://www.linkedin.com/in/gulshank0/",
+    value: "gulshank0",
   },
   {
     name: "GitHub",

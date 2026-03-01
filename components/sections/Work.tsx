@@ -16,6 +16,25 @@ const projects = [
     githubUrl: "https://github.com/gulshank0/rbased-pvt-ltd",
   },
   {
+    title: "Tars Chat App",
+    description:
+      "Real-time chat application with modern UI, live messaging, and seamless user experience.",
+    image: "/chat.png",
+    tags: ["TypeScript", "Next.js", "WebSocket"],
+    category: "REAL-TIME",
+    liveUrl: "https://tars-chat-app-eta.vercel.app",
+    githubUrl: "https://github.com/gulshank0/tars-chat-app",
+  },
+  {
+    title: "Bolt Clone",
+    description:
+      "AI-powered code editor clone — generate, edit, and preview code with an intelligent assistant.",
+    image: "/amazon.jpg",
+    tags: ["TypeScript", "React", "Node.js"],
+    category: "AI TOOL",
+    githubUrl: "https://github.com/gulshank0/bolt-clone",
+  },
+  {
     title: "Happy Heads",
     description:
       "Full-stack application built with modern web technologies for managing and organizing content.",

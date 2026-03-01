@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Cloud, Clock } from "lucide-react";
+import { Cloud, Clock, FileText } from "lucide-react";
+import { useTheme } from "../ThemeProvider";
+import Image from "next/image";
 
 export default function HeroIntro() {
   const [time, setTime] = useState("");
   const [weather, setWeather] = useState<string | null>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const updateTime = () => {
@@ -81,10 +84,17 @@ export default function HeroIntro() {
         animate="visible"
         className="flex items-center gap-3 mb-6"
       >
-        <div
-          className="w-12 h-12 rounded-full bg-cover bg-center border border-[var(--border)]"
-          style={{ backgroundImage: "url(/gulshan.jpeg)" }}
-        />
+        <div className="w-12 h-12 rounded-full overflow-hidden border border-[var(--border)] flex-shrink-0">
+          <Image
+            src="/gulshan.jpeg"
+            alt="Gulshan Kumar"
+            width={96}
+            height={96}
+            quality={100}
+            priority
+            className="w-full h-full object-cover"
+          />
+        </div>
         <div>
           <h1 className="text-base font-semibold text-[var(--foreground)] leading-tight">
             Gulshan Kumar
@@ -101,7 +111,7 @@ export default function HeroIntro() {
         variants={fadeUp}
         initial="hidden"
         animate="visible"
-        className="space-y-4 mb-10"
+        className="space-y-4 mb-8"
       >
         <p className="text-[15px] leading-relaxed text-[var(--foreground)] opacity-80">
           Hey, I&apos;m Gulshan Kumar. I&apos;m a Full Stack Developer
@@ -123,6 +133,38 @@ export default function HeroIntro() {
           focus on building user-first and scalable products, systems, and
           tools.
         </p>
+      </motion.div>
+
+      {/* Resume Button */}
+      <motion.div
+        custom={3}
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+        className="mb-10"
+      >
+        <motion.a
+          href="https://drive.google.com/file/d/12KgYzuxs4XmRKyV_srQvHMZWULpLE26j/view?usp=drive_link"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
+            theme === "dark"
+              ? "metallic-btn"
+              : "bg-[var(--foreground)] text-[var(--background)] hover:opacity-90"
+          }`}
+          whileHover={{ scale: 1.03, y: -1 }}
+          whileTap={{ scale: 0.97 }}
+        >
+          <FileText className="w-4 h-4" strokeWidth={1.8} />
+          View Resume
+          <span
+            className={`ml-1 text-[10px] font-mono uppercase tracking-wider ${
+              theme === "dark" ? "text-[var(--metallic-2)]" : "opacity-60"
+            }`}
+          >
+            PDF
+          </span>
+        </motion.a>
       </motion.div>
     </section>
   );
