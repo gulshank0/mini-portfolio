@@ -173,9 +173,14 @@ interface TerminalLine {
 
 // ─── Command Processor ────────────────────────────────────────────────────────
 
-function processCommand(raw: string): TerminalLine[] {
+function processCommand(
+  raw: string,
+  boxWidth: number,
+  skillCols: number,
+): TerminalLine[] {
   const cmd = raw.trim().toLowerCase();
   const id = () => Date.now() + Math.random();
+  const W = boxWidth;
 
   if (!cmd) return [];
 
@@ -196,14 +201,18 @@ function processCommand(raw: string): TerminalLine[] {
         ["exit", "Return to portfolio"],
         ["sudo rm -rf /", "¯\\_(ツ)_/¯"],
       ];
-      // Box width = 62 inner chars
-      const W = 62;
+      const cmdColW = 16;
       const top = `  ┌${"─".repeat(W)}┐`;
-      const hdr = `  │${"AVAILABLE COMMANDS".padStart(Math.floor((W + 18) / 2)).padEnd(W)}│`;
-      const sep = `  ├${"─".repeat(16)}┬${"─".repeat(W - 17)}┤`;
-      const bot = `  └${"─".repeat(16)}┴${"─".repeat(W - 17)}┘`;
+      const hdr = `  │${"AVAILABLE COMMANDS"
+        .padStart(Math.floor((W + 18) / 2))
+        .padEnd(W)}│`;
+      const sep = `  ├${"─".repeat(cmdColW)}┬${"─".repeat(W - cmdColW - 1)}┤`;
+      const bot = `  └${"─".repeat(cmdColW)}┴${"─".repeat(W - cmdColW - 1)}┘`;
       const rows = cmds
-        .map(([c, d]) => `  │  ${c.padEnd(13)} │  ${d.padEnd(W - 19)} │`)
+        .map(
+          ([c, d]) =>
+            `  │  ${c.padEnd(cmdColW - 3)} │  ${d.padEnd(W - cmdColW - 4)} │`,
+        )
         .join("\n");
       return [
         {
@@ -214,17 +223,18 @@ function processCommand(raw: string): TerminalLine[] {
       ];
     }
 
-    case "about":
+    case "about": {
+      const inner = W - 4;
       return [
         {
           id: id(),
           type: "output",
           content: `
-  ╔════════════════════════════════════════════════════════════╗
-  ║  ${PROFILE.name.padEnd(56)}║
-  ║  ${PROFILE.role.padEnd(56)}║
-  ║  📍 ${PROFILE.location.padEnd(54)}║
-  ╚════════════════════════════════════════════════════════════╝
+  ╔${"═".repeat(W)}╗
+  ║  ${PROFILE.name.padEnd(inner)}║
+  ║  ${PROFILE.role.padEnd(inner)}║
+  ║  📍 ${PROFILE.location.padEnd(inner - 2)}║
+  ╚${"═".repeat(W)}╝
 
 ${PROFILE.bio.map((l) => `  → ${l}`).join("\n")}
 
@@ -232,20 +242,20 @@ ${PROFILE.bio.map((l) => `  → ${l}`).join("\n")}
   LinkedIn: ${PROFILE.linkedin}`,
         },
       ];
+    }
 
     case "skills": {
-      const W = 62;
       const top = `  ┌─ TECH STACK ${"─".repeat(W - 13)}┐`;
       const blank = `  │${" ".repeat(W)}│`;
       const bot = `  └${"─".repeat(W)}┘`;
+      const colWidth = Math.floor((W - 2) / skillCols);
       const rows = SKILLS.reduce((acc, skill, i) => {
-        const col = i % 3;
-        const padded = skill.padEnd(16);
+        const col = i % skillCols;
+        const padded = skill.padEnd(colWidth - 2);
         if (col === 0) acc += "  │  ";
         acc += `▸ ${padded}`;
-        if (col === 2 || i === SKILLS.length - 1) {
-          // Pad remaining columns
-          const filled = (col + 1) * 18 + 2;
+        if (col === skillCols - 1 || i === SKILLS.length - 1) {
+          const filled = (col + 1) * colWidth + 2;
           acc += " ".repeat(Math.max(0, W - filled));
           acc += "│\n";
         }
@@ -262,11 +272,10 @@ ${PROFILE.bio.map((l) => `  → ${l}`).join("\n")}
     }
 
     case "projects": {
-      const W = 62;
       const content = PROJECTS.map((p, i) => {
         const top = `  ┌─ PROJECT ${String(i + 1).padStart(2, "0")} ${"─".repeat(W - 15)}┐`;
         const bot = `  └${"─".repeat(W)}┘`;
-        const name = `  │  ${p.name.padEnd(W - 4)}│`;
+        const name = `  │  ${p.name.substring(0, W - 4).padEnd(W - 4)}│`;
         const desc = `  │  ${p.desc.substring(0, W - 4).padEnd(W - 4)}│`;
         const tech = `  │  Tech: ${p.tech.substring(0, W - 10).padEnd(W - 10)}│`;
         const gh = `  │  GitHub: ${p.github.substring(0, W - 12).padEnd(W - 12)}│`;
@@ -285,42 +294,46 @@ ${PROFILE.bio.map((l) => `  → ${l}`).join("\n")}
       ];
     }
 
-    case "contact":
+    case "contact": {
+      const inner = W - 4;
       return [
         {
           id: id(),
           type: "output",
           content: `
-  ╔═══════════════════════════════════════════╗
-  ║           CONTACT INFORMATION             ║
-  ╠═══════════════════════════════════════════╣
-  ║  📧 Email   : ${PROFILE.email.padEnd(25)} ║
-  ║  🐙 GitHub  : gulshank0                   ║
-  ║  🔗 LinkedIn: gulshank0                   ║
-  ║  🐦 Twitter : gulshank0                   ║
-  ╚═══════════════════════════════════════════╝`,
+  ╔${"═".repeat(W)}╗
+  ║${"CONTACT INFORMATION".padStart(Math.floor((W + 19) / 2)).padEnd(W)}║
+  ╠${"═".repeat(W)}╣
+  ║  📧 Email   : ${PROFILE.email.padEnd(inner - 15)}║
+  ║  🐙 GitHub  : ${"gulshank0".padEnd(inner - 15)}║
+  ║  🔗 LinkedIn: ${"gulshank0".padEnd(inner - 15)}║
+  ║  🐦 Twitter : ${"gulshank0".padEnd(inner - 15)}║
+  ╚${"═".repeat(W)}╝`,
         },
       ];
+    }
 
-    case "whoami":
+    case "whoami": {
+      const inner = W - 4;
       return [
         {
           id: id(),
           type: "output",
           content: `
-  ┌─────────────────────────────────────────────┐
-  │  ACCESS GRANTED                              │
-  │────────────────────────────────────────────│
-  │  User     : guest                           │
-  │  Clearance: VISITOR                         │
-  │  Status   : AUTHENTICATED                   │
-  │  Session  : ${new Date().toISOString().padEnd(31)} │
-  │                                             │
-  │  Welcome to Gulshan's system.               │
-  │  Type 'help' to see available commands.     │
-  └─────────────────────────────────────────────┘`,
+  ┌${"─".repeat(W)}┐
+  │  ${"ACCESS GRANTED".padEnd(inner)}│
+  │${"─".repeat(W)}│
+  │  ${"User     : guest".padEnd(inner)}│
+  │  ${"Clearance: VISITOR".padEnd(inner)}│
+  │  ${"Status   : AUTHENTICATED".padEnd(inner)}│
+  │  Session  : ${new Date().toISOString().padEnd(inner - 12)}│
+  │${" ".repeat(W)}│
+  │  ${"Welcome to Gulshan's system.".padEnd(inner)}│
+  │  ${"Type 'help' to see available commands.".padEnd(inner)}│
+  └${"─".repeat(W)}┘`,
         },
       ];
+    }
 
     case "neofetch":
       return [{ id: id(), type: "ascii", content: NEOFETCH_ART }];
@@ -366,6 +379,36 @@ ${PROFILE.bio.map((l) => `  → ${l}`).join("\n")}
   }
 }
 
+// ─── Layout Hook ──────────────────────────────────────────────────────────────
+
+function useTerminalLayout() {
+  const [layout, setLayout] = useState({ boxWidth: 62, skillCols: 3 });
+
+  useEffect(() => {
+    function compute() {
+      const w = window.innerWidth;
+      if (w <= 380) {
+        setLayout({ boxWidth: 36, skillCols: 1 });
+      } else if (w <= 480) {
+        setLayout({ boxWidth: 40, skillCols: 2 });
+      } else if (w <= 640) {
+        setLayout({ boxWidth: 48, skillCols: 2 });
+      } else if (w <= 768) {
+        setLayout({ boxWidth: 52, skillCols: 2 });
+      } else if (w <= 1024) {
+        setLayout({ boxWidth: 56, skillCols: 3 });
+      } else {
+        setLayout({ boxWidth: 62, skillCols: 3 });
+      }
+    }
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, []);
+
+  return layout;
+}
+
 // ─── Component ─────────────────────────────────────────────────────────────────
 
 export default function TerminalPage() {
@@ -377,6 +420,7 @@ export default function TerminalPage() {
   const [booted, setBooted] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { boxWidth, skillCols } = useTerminalLayout();
 
   // Boot sequence
   useEffect(() => {
@@ -465,7 +509,7 @@ export default function TerminalPage() {
       };
 
       // Process command
-      const outputLines = processCommand(cmd);
+      const outputLines = processCommand(cmd, boxWidth, skillCols);
 
       setLines((prev) => [...prev, inputLine, ...outputLines]);
       setCmdHistory((prev) => [...prev, cmd]);
@@ -496,7 +540,7 @@ export default function TerminalPage() {
         setLines((prev) => [...prev, historyOutput]);
       }
     },
-    [input, cmdHistory, router],
+    [input, cmdHistory, router, boxWidth, skillCols],
   );
 
   const handleKeyDown = useCallback(
