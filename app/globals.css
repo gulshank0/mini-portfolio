@@ -364,18 +364,131 @@ html {
   font-size: 14px;
 }
 
-/* Responsive adjustments */
+/* ─── Responsive Terminal ────────────────────────────────────────────── */
+
+/* Enable horizontal scroll for wide pre-formatted output on all sizes */
+.terminal-line {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: pre;
+}
+
+/* Hide horizontal scrollbar but keep scrollable */
+.terminal-line::-webkit-scrollbar {
+  height: 0;
+  display: none;
+}
+
+/* Small laptop / large tablet (≤1024px) */
+@media (max-width: 1024px) {
+  .terminal-line {
+    font-size: 12px;
+  }
+  .terminal-input-line {
+    font-size: 12px;
+  }
+  .terminal-line-ascii {
+    font-size: 10px;
+  }
+}
+
+/* Tablet (≤768px) */
+@media (max-width: 768px) {
+  .terminal-titlebar {
+    padding: 8px 12px;
+  }
+  .terminal-title {
+    font-size: 11px;
+  }
+  .terminal-body {
+    padding: 16px;
+    padding-bottom: 70px;
+  }
+  .terminal-line {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .terminal-input-line {
+    font-size: 11px;
+  }
+  .terminal-line-ascii {
+    font-size: 8px;
+    line-height: 1.15;
+  }
+  .terminal-caret {
+    width: 7px;
+    height: 14px;
+  }
+}
+
+/* Mobile (≤640px) */
 @media (max-width: 640px) {
+  .terminal-titlebar {
+    padding: 8px 10px;
+  }
+  .terminal-dots {
+    gap: 6px;
+  }
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+  }
+  .terminal-title {
+    font-size: 10px;
+  }
+  .terminal-body {
+    padding: 10px;
+    padding-bottom: 60px;
+  }
+  .terminal-line {
+    font-size: 10px;
+    line-height: 1.4;
+    margin-bottom: 1px;
+  }
+  .terminal-input-line {
+    font-size: 10px;
+  }
   .terminal-line-ascii {
     font-size: 6px;
     line-height: 1.1;
   }
-  .terminal-line,
-  .terminal-input-line {
-    font-size: 11px;
+  .terminal-prompt {
+    font-size: 10px;
   }
+  .terminal-caret {
+    width: 6px;
+    height: 12px;
+  }
+  .terminal-input {
+    font-size: 10px;
+  }
+}
+
+/* Small phone (≤380px) */
+@media (max-width: 380px) {
   .terminal-body {
-    padding: 12px;
-    padding-bottom: 60px;
+    padding: 8px;
+    padding-bottom: 50px;
+  }
+  .terminal-line {
+    font-size: 8.5px;
+    line-height: 1.35;
+  }
+  .terminal-input-line {
+    font-size: 8.5px;
+  }
+  .terminal-line-ascii {
+    font-size: 5px;
+    line-height: 1.05;
+  }
+  .terminal-prompt {
+    font-size: 8.5px;
+  }
+  .terminal-input {
+    font-size: 8.5px;
+  }
+  .terminal-caret {
+    width: 5px;
+    height: 10px;
   }
 }
