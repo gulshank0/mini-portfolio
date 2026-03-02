@@ -8,6 +8,7 @@ import {
   GitPullRequest,
   Mail,
   FileText,
+  Terminal,
   Sun,
   Moon,
 } from "lucide-react";
@@ -25,6 +26,7 @@ const dockItems = [
     external: true,
   },
   { icon: Mail, label: "Contact", href: "#contact" },
+  { icon: Terminal, label: "Terminal", href: "/terminal", external: true },
 ];
 
 export default function FloatingDock() {
