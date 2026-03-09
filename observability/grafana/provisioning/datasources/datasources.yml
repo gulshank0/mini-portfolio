@@ -1,0 +1,23 @@
+# Grafana Datasource Provisioning
+# Auto-configures Prometheus & Jaeger as data sources on startup.
+
+apiVersion: 1
+
+datasources:
+  # ── Prometheus ──────────────────────────────────────────────
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: true
+    jsonData:
+      timeInterval: "10s"
+      httpMethod: POST
+
+  # ── Jaeger ─────────────────────────────────────────────────
+  - name: Jaeger
+    type: jaeger
+    access: proxy
+    url: http://jaeger:16686
+    editable: true

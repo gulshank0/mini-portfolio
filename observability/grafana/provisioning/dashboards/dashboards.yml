@@ -1,0 +1,16 @@
+# Grafana Dashboard Provisioning
+# Auto-loads dashboard JSON files from the dashboards directory.
+
+apiVersion: 1
+
+providers:
+  - name: "default"
+    orgId: 1
+    folder: "Next.js Portfolio"
+    type: file
+    disableDeletion: false
+    updateIntervalSeconds: 30
+    allowUiUpdates: true
+    options:
+      path: /var/lib/grafana/dashboards
+      foldersFromFilesStructure: false
