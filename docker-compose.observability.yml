@@ -13,7 +13,7 @@
 services:
   # ── Prometheus ──────────────────────────────────────────────
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v3.10.0
     container_name: portfolio-prometheus
     ports:
       - "9090:9090"
@@ -32,7 +32,7 @@ services:
 
   # ── Grafana ─────────────────────────────────────────────────
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:12.3.5
     container_name: portfolio-grafana
     ports:
       - "3001:3000"
@@ -52,7 +52,7 @@ services:
 
   # ── Jaeger (All-in-one) ────────────────────────────────────
   jaeger:
-    image: jaegertracing/all-in-one:latest
+    image: jaegertracing/all-in-one:1.76.0
     container_name: portfolio-jaeger
     ports:
       - "16686:16686"  # Jaeger UI
