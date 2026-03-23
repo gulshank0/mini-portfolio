@@ -94,7 +94,7 @@ export default function Work() {
             {/* Category Tag */}
             <div className="px-5 pt-5 pb-3">
               <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-medium tracking-wider text-[var(--muted-foreground)] uppercase">
-                ✦ {project.category}
+                 {project.category}
               </span>
             </div>
 
