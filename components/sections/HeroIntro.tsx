@@ -156,7 +156,7 @@ export default function HeroIntro() {
         className="mb-10"
       >
         <motion.a
-          href="https://drive.google.com/file/d/12KgYzuxs4XmRKyV_srQvHMZWULpLE26j/view?usp=drive_link"
+          href="https://drive.google.com/file/d/1VR48vIfsejNA1NsoAx6hwGBOMkljtvJ1/view?usp=drive_link"
           target="_blank"
           rel="noopener noreferrer"
           className={`inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
